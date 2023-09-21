@@ -16,18 +16,21 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductRepository productRepository;
 
+	//Create a product
 	@Override
 	public Product createProduct(Product product) {
 		// TODO Auto-generated method stub
 		return productRepository.save(product);
 	}
 
+	//get a product by ID
 	@Override
 	public Optional<Product> getProductById(String productId) {
 		// TODO Auto-generated method stub
 		return productRepository.findById(productId);
 	}
 
+	//get all products by ID
 	@Override
 	public Iterable<Product> getAllProducts() {
 		// TODO Auto-generated method stub

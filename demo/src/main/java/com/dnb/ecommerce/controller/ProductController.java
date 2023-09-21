@@ -38,6 +38,7 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
+	//Create a Product
 	@PostMapping("/create")
 	public ResponseEntity<?> createProduct(@Valid @RequestBody ProductRequest product) throws CreateProductException {
 
@@ -46,6 +47,7 @@ public class ProductController {
 		return new ResponseEntity(mappedProduct, HttpStatus.CREATED);
 	}
 
+	//Get a Product By its productId
 	@GetMapping("/{productId}")
 	public ResponseEntity<?> getProductById(@PathVariable("productId") String productId) throws IdNotFoundException {
 
@@ -60,6 +62,7 @@ public class ProductController {
 
 	}
 
+	//Update an existing product by providing its productId 
 	@PutMapping("/update/{productId}")
 
 	public ResponseEntity<?> updateProduct(@RequestBody ProductRequest productRequest,
@@ -84,6 +87,7 @@ public class ProductController {
 
 	}
 
+	//Delete a product 
 	@DeleteMapping("/delete/{productId}")
 	public ResponseEntity<?> deleteProduct(@PathVariable("productId") String productId) throws IdNotFoundException {
 		if (productService.existsById(productId)) {
@@ -96,6 +100,7 @@ public class ProductController {
 
 	}
 
+	//fetch all the product from the database
 	@GetMapping("/allProducts")
 	public ResponseEntity<?> getAllProducts() {
 		List<Product> result;
